@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor!</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body><div id="container">
+    <div id="wrapper">
+        <span>Rock Paper Scissor!</span><br>
+        <div id="scores"><span id="win_badge">You</span>
+        <div id="score_sec"><span id="userscore">0</span><span>:</span><span id="compscore">0</span></div><span id="lose_badge">Bot</span><button onclick="reset()">reset</button></div>
+        
+    <div id="computer1"><img src="paper.png" id="computer" class="computerimg"></div>
+    <div id="output">START!</div>
+    <div id="user1"><img src="rock.png" id="user" class="img1"></div>
+    <br>
+    <div id="choices">
+        <span><img src="rock.png" id="r"></span>
+        <span><img src="paper.png" id="p"></span>
+        <span><img src="scissor.png" id="s"></span>
+    </div>
+</div></div>
+
+
+
+
+<script>
+    alert("Take 10 point to win the game!!!");
+    var a;
+    var win=0;
+    var lose=0;
+ document.getElementById('r').addEventListener('click',function(){
+    var user=0;
+    document.getElementById('user').src="rock.png";
+    game(user);
+    
+ })
+ document.getElementById('p').addEventListener('click',function(){
+    var user=1;
+    document.getElementById('user').src="paper.png";
+    game(user);
+    
+ })
+ document.getElementById('s').addEventListener('click',function(){
+    var user=2;
+    document.getElementById('user').src="scissor.png";
+    game(user);
+    
+})
+function game(user){
+    var output;
+    var userinput=user;
+    var compinput=Math.round(Math.random()*2);
+    if(compinput==0){
+    document.getElementById('computer').src='rock.png';
+    }
+    else if(compinput==1){
+        document.getElementById('computer').src='paper.png';    
+    }
+    else if(compinput==2){
+        document.getElementById('computer').src='scissor.png';
+    }
+    if(userinput==0 && compinput==2){
+        output="WIN";
+        win=win+1;
+        document.getElementById('output').innerHTML=output;
+    }
+    else if(userinput==1 && compinput==0){
+        output="WIN";
+        win=win+1;
+        document.getElementById('output').innerHTML=output;
+    }
+    else if(userinput==2 && compinput==1){
+        output="WIN";
+        win=win+1;
+        document.getElementById('output').innerHTML=output;
+    }
+    else if(userinput==compinput){
+        output="DRAW";
+        document.getElementById('output').innerHTML=output;
+    }
+    else{
+        output="LOSE";
+        lose=lose+1;
+        document.getElementById('output').innerHTML=output;
+    }
+    /*if(output=="WIN"){
+        win=win+1;
+    }
+    else if(output=="LOSE"){
+        lose=lose+1;
+    }*/
+    document.getElementById('userscore').innerHTML=win;
+    document.getElementById('compscore').innerHTML=lose;
+    if(win==10){
+        alert("Congradulations you Won!!!");
+        a=confirm("reset");
+    }
+    else if(lose==10){
+        alert("you lost!!!...Try again");
+        a=confirm("reset");
+    }
+    if(a==1){
+        a=0;
+        reset();
+    }
+}
+function reset(){
+    document.getElementById('output').innerHTML="START !";
+    win=0;
+    lose=0;
+    document.getElementById('userscore').innerHTML=win;
+    document.getElementById('compscore').innerHTML=lose;
+}
+</script>
+</body>
+</html>
